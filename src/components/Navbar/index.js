@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'reactstrap'
 import { Navbar, Nav } from 'react-bootstrap'
+// eslint-disable-next-line import/no-unresolved
 import './styles.css'
 
-function NavigationBar() {
+function NavBar() {
   return (
     <div className="App">
       <Navbar expand="lg">
@@ -18,4 +19,4 @@ function NavigationBar() {
   )
 }
 
-export default NavigationBar
+export default NavBar

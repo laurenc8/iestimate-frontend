@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import client from './client'
-import Navbar from './components/Navbar/index'
+import NavBar from './components/NavBar/index'
 import Categories from './containers/Categories/index'
 import Leaderboard from './containers/Leaderboard/index'
 import Login from './containers/Login/index'
@@ -20,14 +20,16 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
         <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Categories} />
-            <Route exact path="/leaderboard" component={Leaderboard} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route component={() => <Redirect to="/" />} />
-          </Switch>
+          <NavBar />
+          <div style={{ paddingTop: '45px' }}>
+            <Switch>
+              <Route exact path="/" component={Categories} />
+              <Route exact path="/leaderboard" component={Leaderboard} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route component={() => <Redirect to="/" />} />
+            </Switch>
+          </div>
         </div>
       </ApolloProvider>
     </ThemeProvider>
