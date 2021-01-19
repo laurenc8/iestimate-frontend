@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = () => <div>Home</div>
+const Categories = () => <div>Categories</div>
 
 
-export default Home
+export default Categories
