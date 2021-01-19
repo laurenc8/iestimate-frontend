@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'reactstrap'
 import { Navbar, Nav } from 'react-bootstrap'
-import './styles'
+import './styles.css'
 
 function NavigationBar() {
   return (
@@ -11,7 +11,7 @@ function NavigationBar() {
         <Nav>
           <NavLink href="/leaderboard">Leaderboard</NavLink>
           <NavLink href="/login">Login</NavLink>
-          <NavLink href="/">Home</NavLink>
+          <NavLink href="/">Categories</NavLink>
         </Nav>
       </Navbar>
     </div>
