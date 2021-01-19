@@ -1,9 +1,15 @@
 import React from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
+import {
+  Switch,
+  Route,
+  Redirect,
+  BrowserRouter as Router,
+} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import client from './client'
+import Navbar from './components/Navbar/index'
 import Home from './containers/Home/index'
 import Leaderboard from './containers/Leaderboard/index'
 import Login from './containers/Login/index'
@@ -14,6 +20,7 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
         <div className="App">
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/leaderboard" component={Leaderboard} />
