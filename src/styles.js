@@ -8,6 +8,14 @@ export const Container = styled.div`
   flex-wrap: nowrap; // don't wrap around
   justify-content: space-around;
   align-items: center;
+  border-style: solid;
+  margin: auto;
+  border-width: 9px;
+  width: 40%;
+  padding-bottom: 2%;
+  border-color: #790909;
+  background-color: #FFF9F0;
+  border-radius: 10px;
 `
 
 export const Input = styled.input`
@@ -56,7 +64,10 @@ export const Button = styled.button`
   font-size: 1rem;
   line-height: 1.5;
   border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
   text-transform: none;
   overflow: visible;
   letter-spacing: normal;

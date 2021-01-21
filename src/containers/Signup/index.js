@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   Container, Input, Col, Row, Button, FormGroup,
-} from './styles'
+} from '../../styles'
 
 // how to use bootstrap styling for the form without overriding the navbar styling
 
@@ -9,7 +9,7 @@ const Signup = () => {
   const formFields = ['email', 'username', 'password']
   return (
     <Container>
-      <h1>Sign Up!</h1>
+      <h1>Create Your Profile</h1>
       <Row>
         <Col>
           <FormGroup>
