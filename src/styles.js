@@ -80,3 +80,6 @@ export const FormGroup = styled.div`
   margin-bottom: 1rem;
   display: block;
 `
+export const Redirect = styled.a`
+  font: 400 18px Arial;
+`

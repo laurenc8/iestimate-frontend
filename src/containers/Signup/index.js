@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Container, Input, Col, Row, Button, FormGroup,
+  Container, Input, Col, Row, Button, FormGroup, Redirect,
 } from '../../styles'
 
 const Signup = () => {
@@ -29,7 +29,10 @@ const Signup = () => {
           </Col>
         </Row>
       ))}
-      <Button>Sign Up!</Button>
+      <FormGroup>
+        <Button>Sign Up!</Button>
+      </FormGroup>
+      <Redirect href="/signup">Aready have an account? Sign in here!</Redirect>
     </Container>
   )
 }
