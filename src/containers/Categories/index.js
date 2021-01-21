@@ -1,5 +1,6 @@
 import React from 'react'
-import { Title, CatButton } from './styles'
+import { Title } from './styles'
+import Question from './components/Question/index'
 
 const categories = ['cat1', 'cat2', 'cat3', 'cat4']
 
@@ -8,9 +9,7 @@ const Categories = () => (
     <Title>Categories</Title>
     {categories.map(category => (
       <div>
-        <CatButton type="button">
-          {category}
-        </CatButton>
+        <Question name={category} />
         <br />
       </div>
     ))}
