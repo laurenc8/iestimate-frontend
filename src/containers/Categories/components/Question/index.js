@@ -20,6 +20,7 @@ class Question extends Component {
         {/* <Link to="/goal">
           <CatButton type="button">link</CatButton>
         </Link> */}
+        {/* insert question here - query questions database and map over them? */}
         <CatButton type="button">Next Question</CatButton>
       </div>
     )
