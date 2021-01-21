@@ -32,7 +32,7 @@ const Signup = () => {
       <FormGroup>
         <Button>Sign Up!</Button>
       </FormGroup>
-      <Redirect href="/signup">Aready have an account? Sign in here!</Redirect>
+      <Redirect href="/login">Aready have an account? Sign in here!</Redirect>
     </Container>
   )
 }
