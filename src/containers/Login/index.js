@@ -1,6 +1,13 @@
 import React from 'react'
 
-const Home = () => <div>Login</div>
+const Login = () => {
+    return (
+        <div>
+            <p>Login</p>
+            <a href="/Signup">Signup</a>
+        </div>
+    )
+}
 
 
-export default Home
+export default Login
