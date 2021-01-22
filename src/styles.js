@@ -55,6 +55,7 @@ export const Row = styled.div`
 export const Button = styled.button`
   display: inline-block;
   color: #fff;
+  font-family: 'Literata';
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
@@ -82,7 +83,8 @@ export const FormGroup = styled.div`
   display: block;
 `
 export const Redirect = styled.a`
-  font: 400 18px Arial;
+  font: 400 18px;
+  font-family: 'Literata';
 `
 
 export const UserRow = styled.div`

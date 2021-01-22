@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CatButton = styled.button`
   font-size: 1.2em;
+  font-family: 'Literata';
   margin: 0.5em;
   padding: 0.7em 1em;
   border-radius: 6px;
@@ -13,6 +14,7 @@ export const CatButton = styled.button`
 
 export const QuestionButton = styled.button`
   font-size: 1.2em;
+  font-family: 'Literata';
   margin: 0.5em;
   padding: 0.7em 1em;
   border-radius: 6px;
@@ -28,7 +30,6 @@ export const Input = styled.input`
   height: calc(1.5em + .75rem + 2px);
   padding: .375rem .75rem;
   font-size: 1rem;
-  font-weight: 400;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
