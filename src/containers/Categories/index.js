@@ -1,19 +1,31 @@
 import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
 import { Title } from './styles'
 import Question from './components/Question/index'
+import { allCategories } from './graphql'
 
-const categories = ['cat1', 'cat2', 'cat3', 'cat4']
-
-const Categories = () => (
-  <center>
-    <Title>Categories</Title>
-    {categories.map(category => (
-      <div>
-        <Question name={category} />
-        <br />
-      </div>
-    ))}
-  </center>
-)
+const Categories = () => {
+  const { loading, error, data } = useQuery(allCategories)
+  if (loading) return <p>Loading...</p>
+  if (error) {
+    return (
+      <p>
+        Error:
+        {error}
+      </p>
+    )
+  }
+  return (
+    <center>
+      <Title>Categories</Title>
+      {data.allCategories.map(category => (
+        <div key={category.id}>
+          <Question categoryId={category.id} title={category.title} />
+          <br />
+        </div>
+      ))}
+    </center>
+  )
+}
 
 export default Categories
