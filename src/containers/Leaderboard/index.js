@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
 import { allCategories, leaderboardByCategory } from './graphql'
