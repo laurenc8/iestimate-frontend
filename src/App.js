@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import client from './client'
-import NavBar from './components/Navbar/index'
+import NavBar from './components/NavBar/index'
 import Categories from './containers/Categories/index'
 import Leaderboard from './containers/Leaderboard/index'
 import Login from './containers/Login/index'

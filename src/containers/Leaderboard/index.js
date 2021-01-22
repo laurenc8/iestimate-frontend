@@ -4,6 +4,7 @@ import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
+import { Left, Right } from './styles'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -67,14 +68,18 @@ const Leaderboard = () => {
         </div>
         <Row>
           <Col>
-            <UserRow>Username and Score</UserRow>
+            <UserRow>
+              <Left>user</Left>
+              <Right>score</Right>
+            </UserRow>
           </Col>
         </Row>
         {lbData.leaderboardByCategory.map(user => (
           <Row key={user.id}>
             <Col>
               <LeaderboardRow>
-                {`Username: ${user.username}, Score: ${user.scoreByCategory.score}`}
+                <Left>{`${user.username}`}</Left>
+                <Right>{`${user.scoreByCategory.score}`}</Right>
               </LeaderboardRow>
             </Col>
           </Row>
