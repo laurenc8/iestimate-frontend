@@ -4,6 +4,25 @@ import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
 
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: '1px dotted pink',
+    color: state.isSelected ? 'red' : 'blue',
+    padding: 20,
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 200,
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
+}
+
 
 const Leaderboard = () => {
   const top10Users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
@@ -16,7 +35,7 @@ const Leaderboard = () => {
     <Container>
       <h1>Leaderboard: [Category Name]</h1>
       <div>
-        <Select options={categories}/>
+        <Select styles={customStyles} options={categories}/>
       </div>
       <Row>
         <Col>
