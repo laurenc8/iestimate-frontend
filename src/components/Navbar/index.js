@@ -10,8 +10,8 @@ function NavBar() {
       <Navbar expand="lg">
         <Navbar.Brand>iEstimate</Navbar.Brand>
         <Nav>
-          <NavLink href="/leaderboard">Leaderboard</NavLink>
           <NavLink href="/login">Login</NavLink>
+          <NavLink href="/leaderboard">Leaderboard</NavLink>
           <NavLink href="/">Categories</NavLink>
         </Nav>
       </Navbar>

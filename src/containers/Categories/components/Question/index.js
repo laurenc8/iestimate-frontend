@@ -10,6 +10,7 @@ import {
 } from 'react-popupbox'
 // import { Link } from 'react-router-dom'
 import { CatButton } from './styles'
+import { Input, FormGroup } from '../../../../styles'
 import 'react-popupbox/dist/react-popupbox.css'
 
 class Question extends Component {
@@ -19,6 +20,9 @@ class Question extends Component {
         {/* <Link to="/goal">
           <CatButton type="button">link</CatButton>
         </Link> */}
+        <FormGroup>
+          <Input placeholder="Answer" />
+        </FormGroup>
         <CatButton type="button">Next Question</CatButton>
       </div>
     )
