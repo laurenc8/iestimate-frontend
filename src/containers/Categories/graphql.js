@@ -1,5 +1,14 @@
 import gql from 'graphql-tag'
 
+const allCategories = gql`
+    query {
+    allCategories {
+        id
+        title
+    }
+}
+`
+
 const randomQuestionByCategory = gql`
     query ($categoryId: ID!){
         randomQuestionByCategory(categoryId: $categoryId) {
@@ -11,4 +20,4 @@ const randomQuestionByCategory = gql`
     }
 `
 
-export { randomQuestionByCategory }
+export { allCategories, randomQuestionByCategory }
