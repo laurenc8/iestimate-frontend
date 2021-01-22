@@ -1,5 +1,7 @@
-import React from 'react'
-import Select from "react-select"
+import React, { useState } from 'react'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import Select from 'react-select'
+import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
@@ -23,29 +25,48 @@ const customStyles = {
   },
 }
 
-
 const Leaderboard = () => {
-  const top10Users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-  const categories = [
-    { label:'cat1', value: 1 },
-    { label:'cat2', value: 2 },
-    { label:'cat3', value: 3 }
-  ]
+  const [currCategory, setCategory] = useState('')
+  const { loading: catLoading, error: catError, data: catData } = useQuery(allCategories)
+
+  const [getNewLeaderboard, { loading: lbLoading, error: lbError, data: lbData }] = useLazyQuery(
+    leaderboardByCategory,
+    {
+      variables: { categoryId: currCategory },
+    },
+  )
+
+  if (catLoading || lbLoading) return <p>Loading...</p>
+  if (catError || lbError) {
+    return (
+      <p>
+        Error:
+        {catError}
+      </p>
+    )
+  }
+  /* use `catData` in the dropdown menu
+     make the dropdown have an "onchange" property whose value is a function that calls
+     `setCategory` to set the state of the new category, and also calls `getNewLeaderboard`
+  */
   return (
     <Container>
       <h1>Leaderboard: [Category Name]</h1>
       <div>
-        <Select styles={customStyles} options={categories}/>
+        <Select styles={customStyles} options={catData}/>
       </div>
       <Row>
         <Col>
           <UserRow>user and score</UserRow>
         </Col>
       </Row>
-      {top10Users.map(user => (
-        <Row>
+      {lbData.leaderboardByCategory.map(user => (
+        <Row key={user.id}>
           <Col>
-            <LeaderboardRow>{user}</LeaderboardRow>
+            <LeaderboardRow>
+              {user.firstName}
+              {user.lastName}
+            </LeaderboardRow>
           </Col>
         </Row>
       ))}
