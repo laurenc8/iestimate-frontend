@@ -26,19 +26,19 @@ const Login = () => {
       <Row>
         <Col>
           <FormGroup>
-            <Input type="email" name="email" onChange={e => setEmail(e.target.value)} value={email} />
+            <Input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email} />
           </FormGroup>
         </Col>
       </Row>
       <Row>
         <Col>
           <FormGroup>
-            <Input type="password" name="password" onChange={e => setPass(e.target.value)} value={pass} />
+            <Input type="password" name="password" palceholder="Password" onChange={e => setPass(e.target.value)} value={pass} />
           </FormGroup>
         </Col>
       </Row>
       <FormGroup>
-        <Button onClick={login}>Sign in</Button>
+        <Button onClick={login}>Sign in!</Button>
       </FormGroup>
       <Redirect href="/signup">Don&apos;t have an account? Sign up here!</Redirect>
     </Container>
