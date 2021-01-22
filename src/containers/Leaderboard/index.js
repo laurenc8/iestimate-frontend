@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
 import { useHistory } from 'react-router-dom'
@@ -5,6 +6,7 @@ import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
+import { Left, Right } from './styles'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -77,14 +79,18 @@ const Leaderboard = () => {
         </div>
         <Row>
           <Col>
-            <UserRow>Username and Score</UserRow>
+            <UserRow>
+              <Left>user</Left>
+              <Right>score</Right>
+            </UserRow>
           </Col>
         </Row>
         {lbData.leaderboardByCategory.map(user => (
           <Row key={user.id}>
             <Col>
               <LeaderboardRow>
-                {`Username: ${user.username}, Score: ${user.scoreByCategory.score}`}
+                <Left>{`${user.username}`}</Left>
+                <Right>{`${user.scoreByCategory.score}`}</Right>
               </LeaderboardRow>
             </Col>
           </Row>
