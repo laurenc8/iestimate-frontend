@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { useHistory } from 'react-router-dom'
 import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
@@ -25,6 +26,11 @@ const customStyles = {
 }
 
 const Leaderboard = () => {
+  const history = useHistory()
+  const token = localStorage.getItem('token')
+  if (!token) {
+    history.push('/login')
+  }
   const [currCategory, setCategory] = useState('')
   const { loading: catLoading, error: catError, data: catData } = useQuery(allCategories)
 
@@ -62,7 +68,11 @@ const Leaderboard = () => {
         <div>
           <select styles={customStyles} onChange={handleChange}>
             <option disabled>Select a Category</option>
-            {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+            {catData.allCategories.map(category => (
+              <option key={category.id} value={category.id}>
+                {category.title}
+              </option>
+            ))}
           </select>
         </div>
         <Row>
@@ -89,7 +99,11 @@ const Leaderboard = () => {
       <div>
         <select styles={customStyles} onChange={handleChange}>
           <option disabled>Select a Category</option>
-          {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+          {catData.allCategories.map(category => (
+            <option key={category.id} value={category.id}>
+              {category.title}
+            </option>
+          ))}
         </select>
       </div>
       <Row>

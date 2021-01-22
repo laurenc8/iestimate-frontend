@@ -10,7 +10,7 @@ const Login = () => {
   const history = useHistory()
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
-  const [login, { loading, error }] = useMutation(LOGIN, {
+  const [login] = useMutation(LOGIN, {
     variables: {
       email,
       password: pass,

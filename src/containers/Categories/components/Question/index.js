@@ -35,6 +35,7 @@ const Question = props => {
 
   if (loading) return <p>Loading...</p>
   if (error) {
+    // eslint-disable-next-line no-console
     console.log(error)
     return (
       <p>

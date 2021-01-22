@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 
 const Dropdown = () => {
     const categories = ['a','b','c']
@@ -10,3 +10,4 @@ const Dropdown = () => {
 export default Dropdown
 
 //DO NOT USE THIS FILE
+*/
