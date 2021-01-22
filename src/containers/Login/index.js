@@ -33,7 +33,7 @@ const Login = () => {
       <Row>
         <Col>
           <FormGroup>
-            <Input type="password" name="password" palceholder="Password" onChange={e => setPass(e.target.value)} value={pass} />
+            <Input type="password" name="password" placeholder="Password" onChange={e => setPass(e.target.value)} value={pass} />
           </FormGroup>
         </Col>
       </Row>
