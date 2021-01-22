@@ -1,5 +1,6 @@
-import React from 'react'
-import Select from "react-select"
+import React, { useState } from 'react'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
@@ -17,38 +18,85 @@ const customStyles = {
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1
-    const transition = "opacity 300ms"
+    const transition = 'opacity 300ms'
 
     return { ...provided, opacity, transition }
   },
 }
 
-
 const Leaderboard = () => {
-  const top10Users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-  const categories = [
-    { label:'cat1', value: 1 },
-    { label:'cat2', value: 2 },
-    { label:'cat3', value: 3 }
-  ]
+  const [currCategory, setCategory] = useState('')
+  const { loading: catLoading, error: catError, data: catData } = useQuery(allCategories)
+
+  const [getNewLeaderboard, {
+    loading: lbLoading,
+    error: lbError,
+    data: lbData,
+    called,
+  }] = useLazyQuery(
+    leaderboardByCategory,
+    {
+      variables: { categoryId: currCategory },
+    },
+  )
+
+  const handleChange = e => {
+    setCategory(e.target.value)
+    getNewLeaderboard()
+  }
+
+  if (catLoading || lbLoading) return <p>Loading...</p>
+  if (catError || lbError) {
+    return (
+      <p>
+        Error:
+        {catError}
+      </p>
+    )
+  }
+
+  if (called && lbData) {
+    return (
+      <Container>
+        <h1>Leaderboard</h1>
+        <div>
+          <select styles={customStyles} onChange={handleChange}>
+            <option disabled>Select a Category</option>
+            {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+          </select>
+        </div>
+        <Row>
+          <Col>
+            <UserRow>Username and Score</UserRow>
+          </Col>
+        </Row>
+        {lbData.leaderboardByCategory.map(user => (
+          <Row key={user.id}>
+            <Col>
+              <LeaderboardRow>
+                {`Username: ${user.username}, Score: ${user.scoreByCategory.score}`}
+              </LeaderboardRow>
+            </Col>
+          </Row>
+        ))}
+      </Container>
+    )
+  }
+
   return (
     <Container>
-      <h1>Leaderboard: [Category Name]</h1>
+      <h1>Leaderboard</h1>
       <div>
-        <Select styles={customStyles} options={categories}/>
+        <select styles={customStyles} onChange={handleChange}>
+          <option disabled>Select a Category</option>
+          {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+        </select>
       </div>
       <Row>
         <Col>
-          <UserRow>user and score</UserRow>
+          <UserRow>Username and Score</UserRow>
         </Col>
       </Row>
-      {top10Users.map(user => (
-        <Row>
-          <Col>
-            <LeaderboardRow>{user}</LeaderboardRow>
-          </Col>
-        </Row>
-      ))}
     </Container>
   )
 }
