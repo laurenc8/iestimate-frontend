@@ -11,7 +11,8 @@ const Categories = () => {
     return (
       <p>
         Error:
-        {error}
+        {' '}
+        {error.message}
       </p>
     )
   }
