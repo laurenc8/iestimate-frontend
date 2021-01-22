@@ -9,8 +9,8 @@ import {
   PopupboxContainer,
 } from 'react-popupbox'
 // import { Link } from 'react-router-dom'
-import { CatButton } from './styles'
-import { Input, FormGroup } from '../../../../styles'
+import { CatButton, Input, QuestionButton } from './styles'
+import { FormGroup } from '../../../../styles'
 import 'react-popupbox/dist/react-popupbox.css'
 
 class Question extends Component {
@@ -23,7 +23,7 @@ class Question extends Component {
         <FormGroup>
           <Input placeholder="Answer" />
         </FormGroup>
-        <CatButton type="button">Next Question</CatButton>
+        <QuestionButton type="button">Next Question</QuestionButton>
       </div>
     )
     PopupboxManager.open({ content })
