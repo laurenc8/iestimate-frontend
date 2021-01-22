@@ -16,7 +16,6 @@ class Question extends Component {
   openPopupbox() {
     const content = (
       <div>
-        <h2>Question:</h2>
         {/* <Link to="/goal">
           <CatButton type="button">link</CatButton>
         </Link> */}
@@ -30,7 +29,7 @@ class Question extends Component {
     const popupboxConfig = {
       titleBar: {
         enable: true,
-        text: this.props.name,
+        text: 'Question:',
       },
       fadeIn: true,
       fadeInSpeed: 500,
