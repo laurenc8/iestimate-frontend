@@ -44,13 +44,17 @@ function NavBar() {
     weatherPic = pics[weather.weather[0].main]
   }
 
+  const token = localStorage.getItem('token')
+
+  const logout = () => localStorage.removeItem('token')
+
   return (
     <div className="App">
       <Navbar expand="lg" style={{ height: '50px' }}>
         <Navbar.Brand>iEstimate</Navbar.Brand>
         <Nav>
           {weatherPic}
-          <NavLink href="/login">Login</NavLink>
+          {!token ? <NavLink href="/login">Login</NavLink> : <NavLink href="/logout" onClick={logout}>Logout</NavLink>}
           <NavLink href="/leaderboard">Leaderboard</NavLink>
           <NavLink href="/">Categories</NavLink>
         </Nav>
