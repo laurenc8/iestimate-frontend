@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
-import Select from 'react-select'
 import { allCategories, leaderboardByCategory } from './graphql'
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
@@ -19,7 +18,7 @@ const customStyles = {
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1
-    const transition = "opacity 300ms"
+    const transition = 'opacity 300ms'
 
     return { ...provided, opacity, transition }
   },
@@ -29,12 +28,22 @@ const Leaderboard = () => {
   const [currCategory, setCategory] = useState('')
   const { loading: catLoading, error: catError, data: catData } = useQuery(allCategories)
 
-  const [getNewLeaderboard, { loading: lbLoading, error: lbError, data: lbData }] = useLazyQuery(
+  const [getNewLeaderboard, {
+    loading: lbLoading,
+    error: lbError,
+    data: lbData,
+    called,
+  }] = useLazyQuery(
     leaderboardByCategory,
     {
       variables: { categoryId: currCategory },
     },
   )
+
+  const handleChange = e => {
+    setCategory(e.target.value)
+    getNewLeaderboard()
+  }
 
   if (catLoading || lbLoading) return <p>Loading...</p>
   if (catError || lbError) {
@@ -45,31 +54,49 @@ const Leaderboard = () => {
       </p>
     )
   }
-  /* use `catData` in the dropdown menu
-     make the dropdown have an "onchange" property whose value is a function that calls
-     `setCategory` to set the state of the new category, and also calls `getNewLeaderboard`
-  */
+
+  if (called && lbData) {
+    return (
+      <Container>
+        <h1>Leaderboard</h1>
+        <div>
+          <select styles={customStyles} onChange={handleChange}>
+            <option disabled>Select a Category</option>
+            {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+          </select>
+        </div>
+        <Row>
+          <Col>
+            <UserRow>Username and Score</UserRow>
+          </Col>
+        </Row>
+        {lbData.leaderboardByCategory.map(user => (
+          <Row key={user.id}>
+            <Col>
+              <LeaderboardRow>
+                {`Username: ${user.username}, Score: ${user.scoreByCategory.score}`}
+              </LeaderboardRow>
+            </Col>
+          </Row>
+        ))}
+      </Container>
+    )
+  }
+
   return (
     <Container>
-      <h1>Leaderboard: [Category Name]</h1>
+      <h1>Leaderboard</h1>
       <div>
-        <Select styles={customStyles} options={catData}/>
+        <select styles={customStyles} onChange={handleChange}>
+          <option disabled>Select a Category</option>
+          {catData.allCategories.map(category => <option key={category.id} value={category.id}>{category.title}</option>)}
+        </select>
       </div>
       <Row>
         <Col>
-          <UserRow>user and score</UserRow>
+          <UserRow>Username and Score</UserRow>
         </Col>
       </Row>
-      {lbData.leaderboardByCategory.map(user => (
-        <Row key={user.id}>
-          <Col>
-            <LeaderboardRow>
-              {user.firstName}
-              {user.lastName}
-            </LeaderboardRow>
-          </Col>
-        </Row>
-      ))}
     </Container>
   )
 }
