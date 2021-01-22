@@ -1,14 +1,23 @@
 import React from 'react'
+import Select from "react-select";
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
-import Dropdown from '../Dropdown/index.js'
+
 
 const Leaderboard = () => {
   const top10Users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+  const categories = [
+    {label:'cat1', value: 1},
+    {label:'cat2', value: 2},
+    {label:'cat3', value: 3}
+  ]
   return (
     <Container>
       <h1>Leaderboard: [Category Name]</h1>
+      <div>
+        <Select options={categories}/>
+      </div>
       <Row>
         <Col>
           <UserRow>user and score</UserRow>
