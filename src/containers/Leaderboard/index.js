@@ -1,5 +1,5 @@
 import React from 'react'
-import Select from "react-select";
+import Select from "react-select"
 import {
   Container, Col, Row, LeaderboardRow, UserRow,
 } from '../../styles'
@@ -16,20 +16,20 @@ const customStyles = {
     width: 200,
   }),
   singleValue: (provided, state) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
+    const opacity = state.isDisabled ? 0.5 : 1
+    const transition = "opacity 300ms"
 
-    return { ...provided, opacity, transition };
-  }
+    return { ...provided, opacity, transition }
+  },
 }
 
 
 const Leaderboard = () => {
   const top10Users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
   const categories = [
-    {label:'cat1', value: 1},
-    {label:'cat2', value: 2},
-    {label:'cat3', value: 3}
+    { label:'cat1', value: 1 },
+    { label:'cat2', value: 2 },
+    { label:'cat3', value: 3 }
   ]
   return (
     <Container>
