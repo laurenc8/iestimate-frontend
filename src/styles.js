@@ -13,7 +13,7 @@ export const Container = styled.div`
   border-width: 9px;
   width: 40%;
   padding-bottom: 2%;
-  border-color: #790909;
+  border-color: #ACC8B4;
   background-color: #FFF9F0;
   border-radius: 10px;
 `
@@ -82,4 +82,24 @@ export const FormGroup = styled.div`
 `
 export const Redirect = styled.a`
   font: 400 18px Arial;
+`
+
+export const UserRow = styled.div`
+  display: inline-block;
+  width: 500px;
+  height: 20px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 30px;
+  background: #F0D0D0;
+`
+
+export const LeaderboardRow = styled.div`
+  display: inline-block;
+  width: 500px;
+  height: 20px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 30px;
+  background: #FFC5C5;
 `
